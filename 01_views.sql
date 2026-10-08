@@ -1,4 +1,4 @@
--- 1a: Customers whose total sales exceed 2,000
+-- 1a
 CREATE OR REPLACE VIEW high_value_customers AS
 SELECT
     c.customer_id,
@@ -13,7 +13,7 @@ HAVING SUM(o.sales) > 2000;
 SELECT COUNT(*) AS high_value_customer_count
 FROM high_value_customers;
 
--- 2b: Monthly sales by customer region
+-- 2b
 CREATE OR REPLACE VIEW regional_monthly_sales AS
 SELECT
     c.region,
@@ -29,7 +29,7 @@ FROM regional_monthly_sales
 WHERE region = 'West'
 ORDER BY month;
 
--- 3a: Expose order fields without profit
+-- 3a
 CREATE OR REPLACE VIEW analyst_orders AS
 SELECT
     order_id,

@@ -1,4 +1,4 @@
--- 4a: Find orders by customer
+-- 4a
 CREATE INDEX IF NOT EXISTS idx_orders_customer_id
 ON orders (customer_id);
 
@@ -6,7 +6,7 @@ SELECT *
 FROM orders
 WHERE customer_id = 'C001';
 
--- 5a: Monthly sales by order date
+-- 5a
 CREATE INDEX IF NOT EXISTS idx_orders_order_date
 ON orders (order_date);
 
@@ -17,7 +17,7 @@ FROM orders
 GROUP BY DATE_TRUNC('month', order_date)
 ORDER BY month ASC;
 
--- 6a: Composite index for the customer join and date range
+-- 6a
 CREATE INDEX IF NOT EXISTS idx_orders_customer_order_date
 ON orders (customer_id, order_date);
 

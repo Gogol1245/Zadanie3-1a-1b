@@ -1,6 +1,4 @@
--- 7a: Database setup
--- Run CREATE DATABASE separately, then connect to retail_sales
--- before running the remaining statements.
+-- 7a
 CREATE DATABASE retail_sales;
 
 ALTER DATABASE retail_sales SET datestyle TO 'ISO, MDY';
@@ -17,7 +15,6 @@ CREATE TABLE IF NOT EXISTS orders (
     profit      DECIMAL(10,2) NOT NULL
 );
 
--- 7a: Report sales for a customer
 CREATE OR REPLACE PROCEDURE get_customer_sales(p_customer_id VARCHAR)
 LANGUAGE plpgsql
 AS $$
@@ -36,7 +33,7 @@ $$;
 
 CALL get_customer_sales('C001');
 
--- 9a: Apply a discount to a region
+-- 9a
 CREATE OR REPLACE PROCEDURE apply_regional_discount(
     p_region_name VARCHAR,
     p_discount_rate DECIMAL
@@ -55,7 +52,7 @@ $$;
 
 CALL apply_regional_discount('West', 0.10);
 
--- 10a: Report sales in a date range
+-- 10a
 CREATE OR REPLACE PROCEDURE get_sales_between(
     p_start_date DATE,
     p_end_date DATE

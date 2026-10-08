@@ -1,4 +1,4 @@
--- 1b: Daily sales above 3,000,000
+-- 1b
 WITH daily_sales AS (
     SELECT
         sale_date,
@@ -11,7 +11,7 @@ FROM daily_sales
 WHERE total_daily_sales > 3000000
 ORDER BY total_daily_sales DESC;
 
--- 2b: Total sales by product category
+-- 2b
 WITH category_sales AS (
     SELECT
         product_category,
@@ -23,7 +23,7 @@ SELECT product_category, total_sales
 FROM category_sales
 ORDER BY total_sales DESC;
 
--- 2b: Noodles total, for the exercise answer
+-- 2b
 WITH category_sales AS (
     SELECT
         product_category,
@@ -35,7 +35,7 @@ SELECT total_sales
 FROM category_sales
 WHERE product_category = 'Noodles';
 
--- 3b: Top three products in each category
+-- 3b
 WITH product_sales AS (
     SELECT
         product_category,
@@ -60,7 +60,7 @@ FROM ranked_products
 WHERE category_rank <= 3
 ORDER BY product_category, category_rank;
 
--- 4b: Revenue and percentage by customer type
+-- 4b
 WITH customer_sales AS (
     SELECT
         customer_type,
@@ -80,7 +80,7 @@ SELECT customer_type, revenue, total_revenue, revenue_percentage
 FROM revenue_percentages
 ORDER BY revenue DESC;
 
--- 5b: Latest transaction per customer
+-- 5b
 WITH ranked_transactions AS (
     SELECT
         customer_id,
@@ -98,7 +98,7 @@ FROM ranked_transactions
 WHERE row_num = 1
 ORDER BY customer_id ASC;
 
--- 6b: Continuous calendar from first to last sale date
+-- 6b
 WITH RECURSIVE date_bounds AS (
     SELECT MIN(sale_date) AS first_date, MAX(sale_date) AS last_date
     FROM flourmills_sales
@@ -115,7 +115,7 @@ SELECT sale_date
 FROM calendar
 ORDER BY sale_date;
 
--- 6b: Number of dates in the continuous calendar
+-- 6b
 WITH RECURSIVE date_bounds AS (
     SELECT MIN(sale_date) AS first_date, MAX(sale_date) AS last_date
     FROM flourmills_sales
@@ -131,7 +131,7 @@ calendar AS (
 SELECT COUNT(*) AS date_count
 FROM calendar;
 
--- 7b: First month when cumulative sales reach 500,000,000
+-- 7b
 WITH RECURSIVE monthly_revenue AS (
     SELECT
         DATE_TRUNC('month', sale_date)::date AS month,
